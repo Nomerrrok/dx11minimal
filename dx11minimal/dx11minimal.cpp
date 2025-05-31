@@ -1,6 +1,70 @@
-// dx11minimal.cpp : Defines the entry point for the application.
-//
+#define _CRT_SECURE_NO_WARNINGS
 
+const float PI = 3.1415926535897;
+
+#include "windows.h"
+#include "vector"
+#include <stdexcept>
+#include "math.h"
+#include <stdlib.h>
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <sstream>
+#include <algorithm>
+#include <deque>
+//#include "timer.h"
+
+HINSTANCE hInst;
+LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
+
+// секция данных игры  
+struct point3d {
+    float x, y, z;
+
+    bool operator==(const point3d& other) const {
+        return fabs(x - other.x) < 0.001f &&
+            fabs(y - other.y) < 0.001f &&
+            fabs(z - other.z) < 0.001f;
+    }
+
+    bool operator!=(const point3d& other) const {
+        return !(*this == other);
+    }
+};
+
+const float starSize = 10;
+int startTime;
+float circleRadius;
+int currentDayIndex = -1;
+int currentMonthIndex = -1;
+int currentColorIndex = -1;
+const int numColors = 7;
+float camDist = 0;
+
+DWORD currentTime;
+
+HBRUSH mainBrush;
+HPEN mainPen;
+
+HBRUSH heroBrush;
+HPEN heroPen;
+
+
+#include "utils.h"
+#include "MainWindow.h"
+#include "mouse.h"
+#include "Constellation.h"
+#include "MainWorld.h"
+#include "DodgeEnemy.h"
+#include "Navigation.h"
+#include "StatusGame.h"
+#include "font.h"
+#include "Weapon.h"
+#include "MainGame.h"
+#include "DiologTEXT.h"
+#include "DialogStruct.h"
+#include "drawer.h"
 #include "framework.h"
 #include "dx11minimal.h"
 

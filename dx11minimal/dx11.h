@@ -411,7 +411,7 @@ namespace Shaders {
 
 	void Log(const char* message)
 	{
-		OutputDebugString(message);
+		OutputDebugStringA(message);
 	}
 
 	void CompilerLog(LPCWSTR source, HRESULT hr, const char* message)
